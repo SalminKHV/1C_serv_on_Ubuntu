@@ -123,3 +123,19 @@ $ sudo vim /etc/netplan/00-installer-config.yaml
 Файл конфигурации "network"
 Файл конфигурации «network»
 Нам требуется установить значение «dhcp4» на «no«, чтобы отключить протокол DHCP, и указать статический IP-адрес интерфейса следующим образом.
+
+Укажите статический IP адрес сервера в разделе addresses: укажите IPv4 адрес, который будет назначен сетевому интерфейсу.
+Далее укажите шлюз.
+В разделе nameservers укажите DNS или IP — адреса серверов имен. Мы указали DNS Google, который имеет адрес 8.8.8.8 и IP-адрес маршрутизатора.
+network:
+ethernets:
+enp0s3:
+dhcp4: no
+addresses: [192.168.2.150/24]
+gateway4: 192.168.2.1
+nameservers:
+addresses: [8.8.8.8, 192.168.2.1]
+
+![Alt text](Kak-nastroit-staticheskiy-ip-adres-v-ubuntu-3.jpg)
+
+
